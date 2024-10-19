@@ -1,0 +1,360 @@
+*{
+  margin:0;
+  padding:0;
+  font-family: 'Poppins','sans-serif';
+  box-sizing: border-box;
+}
+body{
+ background-image: url('bg.jpg');
+ background-size: cover;
+ background-attachment:scroll; 
+ position: relative;
+  /*background:linear-gradient(90deg,#00feba,#5b548a);
+  background: linear-gradient(90deg, #ff66ff 25%, #3333cc 65%);
+  background: rgb(63,94,251);
+background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,252,159,1) 100%);*/
+
+}
+
+.search button img{
+  width:20px;
+  object-fit: cover;
+}
+.card{
+width:90%;
+max-width:700px;
+background-blend-mode: color-burn;
+background: rgba(255,255,255, 0.1);
+backdrop-filter: blur(30px);
+border:2px solid rgba(255,255,255,.2);
+box-shadow:2px;
+color:#fff;
+margin:50px auto 0;
+border-radius: 20px;
+padding:40px 35px;
+text-align: center;
+}
+.search{
+  width: 100%;
+  display: flex;
+  justify-items: center;
+  justify-content: space-between;
+}
+.search input{
+  border:0;
+  outline:0;
+  background:#ebfffc;
+  color:#555;
+  padding:10px 25px;
+  height:60px;
+  border-radius: 30px;
+  flex:1;
+  margin-right:16px;
+  font-size:18px;
+}
+.search button{
+  border:0;
+  outline:0;
+  background:#ebfffc;
+  border-radius: 50%;
+  width:60px;
+  height:60px;
+  cursor:pointer;
+  transition: 0.3s;
+}
+.weather img{
+  width:200px;
+  mix-blend-mode: color-burn;
+}
+.weather-icon{
+  width:150px;
+  margin-top: 30px;
+  mix-blend-mode: color;
+}
+.weather h1{
+  font-size: 80px;
+  font-weight: 500;
+}
+.weather h2{
+  font-size: 45px;
+  font-weight: 400;
+   margin-top:-10px;
+}
+.details{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  margin-top: 100px;
+  gap:50px;
+}
+.col{
+  display:flex;
+  align-items: center;
+  text-align: left;
+}
+.col img{
+  background: transparent;
+ mix-blend-mode: color-burn;
+  width:40px;
+  margin-right:10px;
+}
+.humidity,.wind,.Description{
+font-size:28px;
+margin-top: -6px;
+}
+.weather{
+  display: none;
+}
+.error{
+  text-align: left;
+  margin-left: 10px;
+  font-size: 14px;
+  margin-top: 10px;
+  display: none;
+}
+nav{
+  height:40px;
+  width:100%;
+  background-color: transparent;
+  color:white;
+  display: flex;
+  flex-direction: row;
+  /*justify-content:space-evenly;*/
+  justify-content: space-around;
+  gap:50px;
+  margin:10px 0px;
+  border-radius: 5px;
+  border-bottom:5px solid white ;
+  box-shadow:inset;
+  font-size: 16px;
+  position:relative;
+  right:0;
+}
+nav li{
+  list-style: none;
+}
+nav li a{
+  text-decoration: none;
+  color:white;
+  width:100%;
+}
+header{
+  position: absolute;
+  top: 50px;
+  left:-250px;
+  width:250px;
+  height:100%;
+  background-blend-mode: color-burn;
+background: rgba(255,255,255, 0.1);
+backdrop-filter: blur(30px);
+border:2px solid rgba(255,255,255,.2);
+  border-right:2px solid white;
+  border-radius: 20px;
+  transition: 0.3s;
+  color:white;
+  justify-content: space-evenly;
+}
+ul{
+  margin:60px 0;
+  padding:0;
+}
+header ul li{
+  list-style-type: none;
+  text-align: center;
+  transition: 0.3s;
+  font-size: 1.5em;
+  margin-bottom: 50px;
+  text-underline-offset: none;
+  border-bottom: 5px solid white;
+  border-radius: 20px;
+}
+ul li a{
+  text-decoration: none;
+  color:white;
+  width:100%;
+}
+ul li a:hover{
+  background-color: white;
+  color:black;
+  border:2px solid white;
+}
+.sidebarbtn{
+position:absolute;
+top:0;
+right:-50px;
+height:50px;
+background-color:white;
+outline:none;
+border:none;
+transition:0.3s;
+}
+.hamburger{
+  position:absolute;
+  top: 18px;
+  left:270px;
+  transform: translate(-50%,-50%);
+  width:40px;
+  height:3px;
+  background-color: white;
+  box-shadow: 0px 4px 5px rgba(0,0,0,0.2);
+}
+.hamburger::after{
+ top:12px;
+}
+.hamburger::before{
+  top:-12px;
+}
+.hamburger::after,
+.hamburger::before{
+position:absolute;
+content: ' ';
+width:40px;
+height:3px;
+background-color: white;
+left:0;
+transition: 0.3s;
+}
+.slidebarbtn.active .hamburger{
+background: none;
+box-shadow: none;
+}
+.slidebarbtn.active .hamburger::after{
+top:0;
+transform: rotate(-45deg);
+  }
+.slidebarbtn.active .hamburger::before{
+    top:0;
+    transform: rotate(45deg);
+ }
+header.enjoy{
+  left:0;
+}
+nav img{
+  position: absolute;
+  top: 0px; /* Adjust distance from the top */
+  left: 10px; /* Adjust distance from the right */
+  height: 30px; /* Adjust logo height */
+}
+.chart{
+  width:100%;
+  height:700px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 200px;
+}
+.vertical,.doughnut,.line{
+  height:400px;
+  width:400px;
+  border:2px solid white;
+  background-blend-mode: color-burn;
+background: rgba(255,255,255, 0.1);
+backdrop-filter: blur(30px);
+border:2px solid rgba(255,255,255,.2);
+box-shadow:2px;
+  margin-top: 100px;
+  justify-content: space-around;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+.chat-container {
+  width: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin:250px 1000px;
+  position: fixed;
+}
+
+.chat-box {
+  height: 300px;
+  padding: 20px;
+  overflow-y: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+.message {
+  margin: 10px 0;
+}
+
+.user {
+  text-align: right;
+}
+
+.bot {
+  text-align: left;
+}
+
+.chatInput textarea{
+  width: calc(100% - 80px);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #6d95c0;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  width:65px;
+  height:65px;
+}
+.chatInput{
+background: #fff;
+border:1px solid #ccc;
+display: flex;
+flex-direction: row;
+}
+.chatInput textarea{
+height:55px;
+width:100%;
+border:none;
+outline:none;
+font-size: 0.95rem;
+resize: 16px 15px 16px 0;
+}
+.chatInput span{
+align-self: flex-end;
+color:#3333ff;
+font-size: 1.35rem;
+cursor:pointer;
+height:55px;
+line-height:55px;
+visibility: hidden;
+}
+.chatInput span img{
+  margin-top:0;
+height: 20px;
+width: 20px;
+}
+.chatInput textarea:valid~span{
+visibility: visible;
+}
+.chat-container .weatherAssistant{
+  width:100%;
+  height: 50px;
+  background-color: #3333ff;
+  color:white;
+  text-align: center;
+}
+.hidden{
+  display: none;
+}
+h1 {
+  margin-bottom: 20px;
+}
+ #myChart{
+  margin-top: 100px;
+}
+#myLineChart{
+  margin-top: 100px;
+}
