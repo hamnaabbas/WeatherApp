@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="WeatherApp.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <title>Tables</title>
+</head>
+<body>
+  <nav>
+    <img src="Weather-logo.webp">
+    <li><a href="WeatherApp.html">Dashboard</a></li>
+    <li><a href="Tables.html">Table</a></li>
+  </nav>
+<header class="header01">
+  <ul>
+    <li><a href="WeatherApp.html">Dashboard</a></li>
+    <li><a href="Tables.html">Tables</a></li>
+  </ul>
+  <button class="slidebarbtn">
+    <div class="hamburger">
+    </div>
+  </button>
+</header>
+<div class="chat-container" class="hidden" >
+  <h1 class="weatherAssistant">Weather Assistant!</h1>
+  <div class="chat-box" id="chat-box"></div>
+  <div class="chatInput">
+    <textarea id="user-input" placeholder="Ask for the weather..." required></textarea>
+    <span id="send-button" class="material-symbols-outlined" class="fa fa-paper-plane"><img src="send.png"></span>
+  </div>
+</div>
+</body>
+<script>
+    $(document).ready(function(){
+$('.slidebarbtn').click(function(){
+  $('.slidebarbtn').toggleClass('active');
+  $('.header01').toggleClass('enjoy');
+})
+   });
+  const chatBox = document.getElementById('chat-box');
+const userInput = document.getElementById('user-input');
+const sendButton = document.getElementById('send-button');
+const chatContainer = document.querySelector('.chat-container'); 
+const apiKey="2e56cdc2aebf39c2962d1560e38a3b74 ";
+const apiUrl="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+sendButton.addEventListener('click', () => {
+    const userMessage = userInput.value;
+    if (userMessage.trim() === '') return;
+
+    addMessage(userMessage, 'user');
+    userInput.value = '';
+
+    fetchWeather(userMessage);
+});
+function addMessage(message, type) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', type);
+    messageDiv.innerText = message;
+    chatBox.appendChild(messageDiv);
+    chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+}
+
+async function fetchWeather(location) {
+ 
+    try {
+        const response = await fetch(apiUrl+location+`&appid=`+apiKey);
+        if (!response.ok) throw new Error('Location not found');
+        const data = await response.json();
+
+        const weatherMessage = `🌤️ Hey there! The weather in ${data.name} is currently ${data.weather[0].description}. The temperature is ${data.main.temp}°C. Stay cozy!`;
+        addMessage(weatherMessage, 'bot');
+    } catch (error) {
+        const errorMessage = `😢 Oops! I couldn't find the weather for "${location}". Please check the spelling or try another location.`;
+        addMessage(errorMessage, 'bot');
+    }
+}
+
+// Add a friendly greeting
+addMessage("👋 Hi! I'm your weather assistant. Just type in a location to find out the weather!", 'bot');
+function toggleChat() {
+    chatContainer.classList.toggle('hidden');
+}
+const toggleButton = document.createElement('button');
+toggleButton.innerText = 'Toggle Chat';
+toggleButton.style.position = 'fixed'; // Position it as needed
+toggleButton.style.top = '600px';
+toggleButton.style.right = '10px';
+toggleButton.style.backgroundColor="blue";
+toggleButton.style.borderRadius = '50%';
+toggleButton.style.width="100px";
+toggleButton.style.height="100px";
+toggleButton.addEventListener("onmouseover",()=>{
+  toggleButton.style.backgroundColor="white";
+  toggleButton.style.color="black";
+})
+
+document.body.appendChild(toggleButton);
+
+toggleButton.addEventListener('click', toggleChat);
+</script>
+</html>
